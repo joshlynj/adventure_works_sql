@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import pandas as pd
 import psycopg2 as pg2
+import argparse
 
 load_dotenv()
 
@@ -81,7 +82,15 @@ def convert_sql_to_xlsx_from_cli():
     """
     Converts directory of sql queries to xlsx from CLI.
     """
-    pass
+    parser = argparse.ArgumentParser(description="covert sql queries")
+    
+    parser.add_argument("sql_from_dir")
+    
+    parser.add_argument("xlsx_out")
+    
+    args = parser.parse_args()
+    
+    convert_directory_of_queries(args.sql_from_dir, args.xlsx_out)
 
 if __name__ == '__main__':
-    pass
+    convert_sql_to_xlsx_from_cli()
