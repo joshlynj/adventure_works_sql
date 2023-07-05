@@ -29,11 +29,7 @@ def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
                     host=POSTGRES_HOST,
                     password=POSTGRES_PASSWORD,
                     port=POSTGRES_PORT)
-
-    cur = conn2.cursor()
     
-    # cur.execute()
-        
     df = pd.read_sql_query(sql_query, conn2)
     
     excel_file = xlsx_name + ".xlsx"
@@ -72,8 +68,8 @@ def convert_directory_of_queries(sql_in_dir, xlsx_out_dir):
     
     #iterate over list and do the same os.path.join 
     # then use our prev function
-    for file in files:
-        sql_path = os.path.join(sql_in_dir, file)
+    for f in files:
+        sql_path = os.path.join(sql_in_dir, f)
         convert_sql_to_xlsx(sql_path, xlsx_out_dir)
     
     return None 
