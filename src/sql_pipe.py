@@ -28,21 +28,22 @@ def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
     """
     
     #read the sql query from the file
+    
     with open(sql_in, "r") as f:
         sql_query = f.read()
-        
+     
     conn2 = pg2.connect(dbname='adventureworks',
                     user=POSTGRES_USER,
                     host=POSTGRES_HOST,
                     password=POSTGRES_PASSWORD,
                     port=POSTGRES_PORT)
-    
+  
     df = pd.read_sql_query(sql_query, conn2)
     
     excel_file = xlsx_name + ".xlsx"
-    
+  
     excel_path = os.path.join(xlsx_out, excel_file)
-    
+   
     w = pd.ExcelWriter(excel_path, engine='openpyxl')
     
     df.to_excel(w)
@@ -52,6 +53,7 @@ def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
     w.close()
     
     conn2.close()
+   
     
     return None
 
@@ -96,5 +98,6 @@ def convert_sql_to_xlsx_from_cli():
     convert_directory_of_queries(args.sql_from_dir, args.xlsx_out)
 
 if __name__ == '__main__':
-    convert_sql_to_xlsx('sql_queries\q2_query.sql', 'excel_reports', 'excel_2_queries')
+    print("Test1")
+    convert_sql_to_xlsx('sql_queries\q3_query.sql', 'excel_reports', 'excel_3_queries')
     
