@@ -99,6 +99,6 @@ def convert_sql_to_xlsx_from_cli():
 
 if __name__ == '__main__':
     print("Test1")
-    convert_sql_to_xlsx('sql_queries\q4_query.sql', 'excel_reports', 'excel_4_queries')
+    convert_sql_to_xlsx('sql_queries\q5_query.sql', 'excel_reports', 'excel_5_queries')
     
     
