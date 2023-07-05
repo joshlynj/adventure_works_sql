@@ -96,5 +96,5 @@ def convert_sql_to_xlsx_from_cli():
     convert_directory_of_queries(args.sql_from_dir, args.xlsx_out)
 
 if __name__ == '__main__':
-    convert_sql_to_xlsx('sql_queries\q1_query.sql', 'excel_reports', 'excel_queries')
+    convert_sql_to_xlsx('sql_queries\q2_query.sql', 'excel_reports', 'excel_2_queries')
     
