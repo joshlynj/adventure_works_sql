@@ -66,7 +66,16 @@ def convert_directory_of_queries(sql_in_dir, xlsx_out_dir):
     Returns:
         None
     """
-    pass
+    
+    files = [file for file in os.listdir(sql_in_dir)]
+    
+    #iterate over list and do the same os.path.join 
+    # then use our prev function
+    for file in files:
+        sql_path = os.path.join(sql_in_dir, file)
+        convert_sql_to_xlsx(sql_path, xlsx_out_dir)
+    
+    return None 
 
 def convert_sql_to_xlsx_from_cli():
     """
