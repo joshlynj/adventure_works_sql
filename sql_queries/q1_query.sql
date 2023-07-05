@@ -4,7 +4,7 @@ SELECT
     ea.emailaddress,
     e.vacationhours AS accrued_vacation_hours
 FROM
-    employee AS e
+    humanresources.employee AS e
 JOIN
     person.person AS p ON e.businessentityid = p.businessentityid
 JOIN

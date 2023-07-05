@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import pandas as pd
 import psycopg2 as pg2
 import argparse
+import openpyxl
+
 
 load_dotenv()
 
@@ -29,7 +31,7 @@ def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
     with open(sql_in, "r") as f:
         sql_query = f.read()
         
-    conn2 = pg2.connect(dbname="adventureworks",
+    conn2 = pg2.connect(dbname='adventureworks',
                     user=POSTGRES_USER,
                     host=POSTGRES_HOST,
                     password=POSTGRES_PASSWORD,
@@ -41,7 +43,7 @@ def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
     
     excel_path = os.path.join(xlsx_out, excel_file)
     
-    w = pd.ExcelWriter(excel_path)
+    w = pd.ExcelWriter(excel_path, engine='openpyxl')
     
     df.to_excel(w)
     
@@ -94,4 +96,5 @@ def convert_sql_to_xlsx_from_cli():
     convert_directory_of_queries(args.sql_from_dir, args.xlsx_out)
 
 if __name__ == '__main__':
-    convert_sql_to_xlsx_from_cli()
+    convert_sql_to_xlsx('sql_queries\q1_query.sql', 'excel_reports', 'excel_queries')
+    
