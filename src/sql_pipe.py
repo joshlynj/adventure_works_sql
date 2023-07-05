@@ -6,6 +6,11 @@ import argparse
 
 load_dotenv()
 
+POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
+POSTGRES_USER = os.getenv('POSTGRES_USER')
+POSTGRES_HOST = os.getenv('POSTGRES_HOST')
+POSTGRES_PORT = os.getenv('POSTGRES_PORT')
+
 def convert_sql_to_xlsx(sql_in, xlsx_out, xlsx_name=None):
     """
     Runs query in given .sql file, stores result as .xlsx file.
